@@ -18,12 +18,22 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button v-on:click="counter++">Add</button> <!-- v-on: ile event listener ekliyoruz :click gibi :'dan
+      <button v-on:click="add(5)">Add</button> <!-- v-on: ile event listener ekliyoruz :click gibi :'dan
       sonra event adı geliyor, ="" tırnak içine çalışmasını istediğimiz javascript kodunu yazıyoruz
-     -->
-      <button v-on:click="counter--">Reduce</button>
+     buraya counter++ da yazabiliriz add() veya add gibi fonksiyonda çağırabiliriz -->
+      <button v-on:click.right="reduce">Reduce</button> <!-- modifier ile right click dinledik-->
       <p>Result: {{ counter }}</p> <!-- değer dinamik olarak güncellenir, counter değiştiğinde 
       buraya yansır anlık olarak, dinamik çalışır -->
+      <input type="text" v-on:input="setName">
+      <input type="text" v-on:input="setName($event, 'PC')" v-on:keyup.enter="confirmInput"> <!-- event parametresi ile başka
+      parametreler kullanılırken, .enter ile sadece entera basıldıgında çalışıcak -->
+      <p>Your Name: {{ confirmedName }}</p>
+      <form v-on:submit.prevent="submitForm"> <!-- eventlerden sonra . ile modifier eklenir, örneğin
+      event.preventDefault() yapmak yerine .prevent dedik. form elementinin içindeki butona basıldığında
+      sayfa yenilenmekte ama prevent yapınca yenilenmez -->
+        <input type="text">
+        <button>Sign Up</button>
+      </form>
     </section>
   </body>
 </html>
