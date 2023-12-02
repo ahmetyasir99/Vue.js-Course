@@ -18,14 +18,15 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button v-on:click="add(10)">Add 10</button>
+      <button @click="add(10)">Add 10</button> <!-- v-on: yerine @ kullanılıyor-->
       <button v-on:click="reduce(5)">Subtract 5</button>
       <p>Result: {{ counter }}</p>
       <!-- inputun valuesi de name oluyo ki sıfırlandıgında vs eşitlensin aşağıdaki name ile 
       bunun içi. v-bind:value="name" dediğimizde inputa her girdi yapıldıgında name'ı setlemiyor
       bu her girişte setlemeyi eventle ve fonksiyonla v-on:input ile yapıyoruz. Bu fonksiyon
       olmadan sadece v-bind değer setlemesi yapıyor. -->
-      <input type="text" v-bind:value="name" v-on:input="setName($event, 'Schwarzmüller')">
+      <!-- v-bind: yerine : kullanılıyor.  -->
+      <input type="text" :value="name" v-on:input="setName($event, 'Schwarzmüller')">
       <!-- v-model ise 2 yönlü çalışıyor (2 way binding). inputun içine koyulan değeri anlık olarak
       atanan değişkene eşitliyor. Ve bu değişken başka yerde kullanılırsa orada da güncellenmiş oluyor. -->
       <input type="text" v-model="name">
