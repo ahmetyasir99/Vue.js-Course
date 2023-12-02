@@ -22,12 +22,12 @@
       <button v-on:click="showAlert">Show Alert</button>
       <hr />
       <!-- 2) Register the user input on "keydown" and output it in the paragraph (hint: event.target.value helps) -->
-      <input v-on:keydown="changeOutput" type="text" />
-      <p>OUTPUT: {{ userInput }}</p>
+      <input v-on:keydown="setOutput" type="text" />
+      <p>OUTPUT: {{ output }}</p>
       <hr />
       <!-- 3) Repeat 2) but only output the entered value if the ENTER key was pressed -->
-      <input v-on:keydown.enter="setConfirmed" type="text" />
-      <p>OUTPUT: {{ confirmedInput }}</p>
+      <input v-on:keydown="setOutput" v-on:keydown.enter="confirmInput" type="text" />
+      <p>OUTPUT: {{ confirmedOutput }}</p>
     </section>
   </body>
 </html>

@@ -1,19 +1,20 @@
 const app = Vue.createApp({
     data() {
-        return {
-            name: 'Ahmet Yasir',
-            age: 24,
-            image: 'https://cdn.motor1.com/images/mgl/Kbb6BQ/s3/2024-ford-mustang-motor1-rendering.jpg'
-        };
+      return {
+        name: 'Ahmet',
+        age: 24,
+        src: 'https://i0.shbdn.com/photos/06/37/13/x5_1112063713ztj.jpg'
+      };
     },
     methods: {
-        calculateAge() {
+        add5ToAge() {
             return this.age + 5;
         },
-        getRandomNumber() {
-            return Math.random();
+        randomNumber() {
+            return Math.round(Math.random() * 10)
         }
-    }
-});
-
-app.mount('#assignment');
+    },
+  });
+  
+  app.mount('#assignment');
+  

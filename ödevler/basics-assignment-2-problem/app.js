@@ -1,22 +1,22 @@
 const app = Vue.createApp({
-    data() {
-      return {
-        userInput: '',
-        confirmedInput: ''
-      };
+  data() {
+    return {
+      output: '',
+      confirmedOutput: ''
+    };
+  },
+  methods: {
+    showAlert() {
+      alert('davay davay');
     },
-    methods: {
-        showAlert() {
-            alert('ben bir arıyım');
-        },
-        changeOutput(event) {
-            this.userInput = event.target.value;
-        },
-        setConfirmed(event) {
-            this.confirmedInput = event.target.value;
-        }
+    setOutput(event) {
+      this.output = event.target.value;
+    },
+    confirmInput() {
+      this.confirmedOutput = this.output;
     }
-  });
-  
-  app.mount('#assignment');
-  
+  },
+   
+});
+
+app.mount('#assignment');
