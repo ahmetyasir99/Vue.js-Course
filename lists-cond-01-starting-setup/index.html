@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input v-model="enteredGoalValue" type="text" />
+      <button @click="addGoal">Add Goal</button>
+      <!-- v-if ile conditiona göre element renderlanmasını sağlarız 
+      burada computed method kullanabiliriz true false dönmesi yeter-->
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-else-if="goals.length > 0"> <!-- v-else v-if'in hemen ardından arada başka element yoksa
+      kullanılabilir -->
+      <p v-else>Bitti</p>
+      <!-- v-for ile aşağıda for(goal in goals) gibi bir kullanım yaptık buradaki
+      goali başka bir yerde kullanamayız-->
+        <li v-if="false" v-for="goal in goals">{{ goal }}</li>
+        <!-- index de kullanılır -->
+        <!-- burada aşağıda :key kullanıp içine unique olacak bir eleman vermemiz
+        gerir yoksa vue bunları aynı algılıyor mesela listenin ilk elamanını silince
+        ikinci elemanı ilk yerine koyup bilgileri aktarıyor, key kullabırsak
+        bu olmuyor ve direk ilgili elemanı siliyor key olarak listedki
+        eleman verilebilir ancak elemanlar aynıysa yine patlıyor -->
+        <li v-for="(goal, index) in goals" :key="goal" @click="removeGoal(index)">
+          <p>{{ goal }} - {{ index }}</p>
+          <!-- @click.stop ile stop propogation yaptık. yani li'ye basınca
+          siliniyordu, inputta aynı şekilde ama şuan inputa basınca silinmiyor -->
+          <input type="text" @click.stop>
+        </li>
+      </ul>
+      <ul v-if="false">
+        <!-- v-for ile obje de döneriz, valueler aşağıdaki gibi gelir keylerde -->
+        <li v-for="(value, key, index) in {name: 'Max', age: 30}">{{ key }}: {{ value }} {{ index }}</li>
+      </ul>
+      <ul v-if="false">
+        <li v-for="num in 10">{{ num }}</li>
+      </ul>
+      <!-- v-show v-if'ten farklı olarak sadece display none yapar, v-if ise sayfada
+      elementi kaldırır veya ekler. Eğer element çok değişkense v-show değilse v-if -->
+      <p v-show="goals.length === 0">v-show çalışması</p>
+    </section>
+  </body>
+</html>
