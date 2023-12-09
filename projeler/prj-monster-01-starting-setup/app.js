@@ -21,7 +21,6 @@ const app = Vue.createApp({
         },
         playerBarStyles() {
             if (this.playerHealth < 0) {
-                return {width: '0%'}
             }
             return {width: this.playerHealth +'%'}
         },
@@ -51,8 +50,10 @@ const app = Vue.createApp({
             this.currentRound++;
             const attackValue = getRandomValue(5, 12);
             this.monsterHealth -= attackValue;
+            debugger;
             this.addLogMessage('player', 'attack', attackValue);
             this.attackPlayer();
+            console.log(this.logMessages)
         },
         attackPlayer() {
             const attackValue = getRandomValue(8, 15);
@@ -63,7 +64,7 @@ const app = Vue.createApp({
             this.currentRound++;
             const attackValue = getRandomValue(10, 25);
             this.monsterHealth -= attackValue;
-            this.addLogMessage('monster', 'special-attack', attackValue);
+            this.addLogMessage('player', 'special-attack', attackValue);
             this.attackPlayer();
         },
         healPlayer() {
