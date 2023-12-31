@@ -41,17 +41,26 @@ export default {
           phone: "013232 21323 2",
           email: "julie@localhost.com",
           isFavorited: false
-        },
-      ],
+        }
+      ]
     };
   },
   methods: {
     toggleFavoriteStatus(friendId) {
         //aşağıda friends listesinden bir objeyi çektik, bunun üzerinden değişiklik yapınca ana listedeki obje de değişiyor
+        //provide inject mevzusu var, provide yukarıdaki parenntan aşağıda 2 nesil aşağıda olan childe elemnte bir veri geçirirken 
+        //kullanılır. Parentte provide objesi açarız ve veriyi buraya koyarız, childde ise inject listesi ile bunu çekeriz
        const identifiedFriend = this.friends.find(friend => friend.id === friendId);
 
        identifiedFriend.isFavorited = !identifiedFriend.isFavorited;
     },
+    /*
+    provide() {
+      return {
+        friends: this.friends
+      }
+    }
+    */
     addContact(name, phone, email) {
         const newFriendContant = {
             id: new Date().toISOString(),
